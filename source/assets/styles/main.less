@@ -1,5 +1,16 @@
-@import "_core/colors";
-@import "_core/base";
+@import "_core/tailwind.css";
 @import "_core/github";
+
+body {
+  @apply bg-orange-lighter;
+}
+
+.site-nav {
+  @apply inline-block py-2 bg-black-lighter text-sm text-blue-darkest no-underline mr-1 rounded-sm;
+
+  &:hover {
+    @apply bg-black-darker;
+  }
+}
 
 @import "_blocks/**/[!_]*";

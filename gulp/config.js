@@ -78,6 +78,7 @@ const config = {
     less: {
       outputStyle: 'expanded',
     },
+    tailwindSrc: `${path.src}tailwind.js`,
   },
   html: {
     src: `${path.src}templates/*.ejs`,

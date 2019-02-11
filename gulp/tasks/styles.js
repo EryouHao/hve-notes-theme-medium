@@ -19,6 +19,7 @@ import cssMqpacker from 'css-mqpacker'
 import autoprefixer from 'autoprefixer'
 import cssnano from 'gulp-cssnano'
 import header from 'gulp-header'
+import tailwindcss from 'tailwindcss'
 
 import config from '../config'
 
@@ -39,6 +40,7 @@ class Styles {
         postcssImageSetFunction(),
         postcssCustomMedia(),
         postcssMediaMinmax(),
+        tailwindcss(config.styles.tailwindSrc),
         autoprefixer(config.styles.postcss.autoprefixer),
         cssMqpacker(),
       ], {

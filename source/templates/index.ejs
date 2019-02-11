@@ -1,3 +1,55 @@
+<%
+  // 模拟数据
+  var themeConfig = {
+    "footerInfo": "Powered by Hve Notes",
+    "pageSize": 10,
+    "showFeatureImage": true,
+    "siteDescription": "温故而知新",
+    "siteName": "Hve Notes",
+    "themeName": "notes"
+  }
+  var menus = [
+    { 
+      link: 'http://fehey.com',
+      name: '首页',
+      openType: 'Internal'
+    },
+    { 
+      link: 'http://fehey.com',
+      name: '归档',
+      openType: 'Internal'
+    },
+    { 
+      link: 'http://fehey.com',
+      name: '标签',
+      openType: 'Internal'
+    },
+    { 
+      link: 'http://fehey.com',
+      name: '关于',
+      openType: 'Internal'
+    },
+    { 
+      link: 'http://fehey.com',
+      name: 'Github',
+      openType: 'Internal'
+    },
+  ]
+  var posts = [
+    {
+      "abstract": "<strong>Hve Notes</strong> 一个静态博客写作客户端 ",
+      "content": "<strong>Hve Notes</strong> 一个静态博客写作客户端 <!-- more -->↵↵👏 欢迎使用 <strong>Hve Notes</strong> ！",
+      "data": {
+        "date": "2019-01-15 08:00:00",
+        "dateFormat": "2019-01-15",
+        "feature": "/post-images/hello-hve-notes.png",
+        "published": true,
+        "tags": ["HveNotes"]
+      },
+      "fileName": "hello-hve-notes"
+    }
+  ]
+%>
 
 <!DOCTYPE html>
 <html>
@@ -5,17 +57,38 @@
     <%- include('./_blocks/head') %>
   </head>
   <body>
-    <div id="app" class="main">
-      <%- include('./_blocks/header') %>
-
-      <div class="content-container">
-        
-        <%- include('./_blocks/post-list') %>
-
+    <div id="app" class="main container mx-auto max-w-lg px-4">
+      <header class="py-4">
+        <h1><%= themeConfig.siteName %></h1>
+        <div class="text-orange-darkest text-sm py-4">
+          <%- themeConfig.siteDescription %>
+        </div>
+        <div class="md:flex mt-4 tracking-wide text-md spaced-x-16">
+          <% menus.forEach(function(menu) { %>
+            <% if (menu.openType === 'External') { %>
+              <a href="<%= menu.link %>" class="site-nav" target="_blank">
+                <%= menu.name %>
+              </a>
+            <% } else { %>
+              <a href="<%= menu.link %>" class="site-nav">
+                <%= menu.name %>
+              </a>
+            <% } %>
+          <% }); %>
+        </div>
+      </header>
+      <div>
+        <article class="flex">
+          <div class="w-gold flex-no-shrink">
+            <div class="pt-gold bg-center bg-cover rounded-sm" style="background-image: url('https://hve-notes.github.io/post-images/2018-nian-zhong-zong-jie.png')"></div>
+          </div>
+          <div class="pl-4">
+            <h2 class="pb-4">遇见创作，遇见 Hve Notes</h2>
+            <div class="leading-normal pb-2">我如果爱你，绝不象攀援的凌霄花，借你的高枝炫耀自己；我如果爱你，绝不学痴情的鸟儿，为绿荫重复单调的歌曲；也不止象泉源，常年送来清凉的慰藉；也不止象险峰，增加你的高度，衬托你的威仪。甚至日光。甚至春雨。</div>
+            <time class="text-sm text-blue-darkest">2019-02-11</time>
+          </div>
+        </article>
       </div>
-
-      <%- include('./_blocks/footer') %>
-
     </div>
     <%- include('./_blocks/scripts') %>
   </body>
